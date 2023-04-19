@@ -1,0 +1,1 @@
+Proszę nie włączać exe bezpośrednio, tylko włączyć cmd w tym folderze, a następnie uruchomić exe z poziomu cmd
