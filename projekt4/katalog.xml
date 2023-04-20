@@ -1,4 +1,4 @@
-<laptops moddate="2023-04-19T11:42:22.759614">
+<laptops moddate="2023-04-20T18:05:01.329512">
  <laptop id="1">
    <manufacturer>Dellfaaaaaaaaaaaaaaa</manufacturer>
    <screen touch="nie">
@@ -100,7 +100,7 @@
    </screen>
    <procesor>
      <name>intel i7</name>
-     <physical_cores>4</physical_cores>
+     <physical_cores>5</physical_cores>
      <clock_speed>3300</clock_speed>
    </procesor>
    <ram>8GB</ram>
@@ -145,7 +145,7 @@
     <type>matowa</type>
    </screen>
    <procesor>
-     <name>intel i5</name>
+     <name>intel i8</name>
      <physical_cores>4</physical_cores>
      <clock_speed>2800</clock_speed>
    </procesor>
@@ -169,7 +169,7 @@
    </screen>
    <procesor>
      <name>intel i7</name>
-     <physical_cores>8</physical_cores>
+     <physical_cores>4</physical_cores>
      <clock_speed>2800</clock_speed>
    </procesor>
    <ram>24GB</ram>

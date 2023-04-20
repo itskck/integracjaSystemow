@@ -15,6 +15,8 @@ class ComponentsCubit extends Cubit<ComponentsState> {
 
   Future<void> loadData() async {
     try {
+      final List<String>? oldLaptops =
+          state.mapOrNull(loaded: (value) => value.componentsList);
       emit(const ComponentsState.loading());
       final File file = File('katalog.txt');
       final lines = file.readAsLinesSync();
@@ -34,10 +36,17 @@ class ComponentsCubit extends Cubit<ComponentsState> {
         }
       }
 
-      emit(ComponentsState.loaded(
-        componentsList: lines,
-        controllers: controllers,
-      ));
+      emit(
+        ComponentsState.loaded(
+          componentsList: lines,
+          controllers: controllers,
+          isRed: List.generate(
+            lines.length,
+            (index) =>
+                oldLaptops != null ? lines[index] == oldLaptops[index] : false,
+          ),
+        ),
+      );
     } catch (error) {
       log('Error while loading data');
       emit(const ComponentsState.initial());
@@ -193,6 +202,8 @@ class ComponentsCubit extends Cubit<ComponentsState> {
 
   Future<void> loadFromXML() async {
     try {
+      final List<String>? oldLaptops =
+          state.mapOrNull(loaded: (value) => value.componentsList);
       emit(const ComponentsState.loading());
       final File file = File('katalog.xml');
       final String content = file.readAsStringSync();
@@ -259,6 +270,11 @@ class ComponentsCubit extends Cubit<ComponentsState> {
       emit(ComponentsState.loaded(
         componentsList: lines,
         controllers: controllers,
+        isRed: List.generate(
+          lines.length,
+          (index) =>
+              oldLaptops != null ? lines[index] == oldLaptops[index] : false,
+        ),
       ));
     } catch (error) {
       log('Error while loading data', error: error);
@@ -308,7 +324,9 @@ class ComponentsCubit extends Cubit<ComponentsState> {
 
   Future<void> loadFromDb() async {
     try {
-      emit(ComponentsState.loading());
+      final List<String>? oldLaptops =
+          state.mapOrNull(loaded: (value) => value.componentsList);
+      emit(const ComponentsState.loading());
       final List<Laptop> laps = await db.getLaptops();
       final List<String> lines = [];
       List<TextEditingController> controllers = [];
@@ -331,6 +349,11 @@ class ComponentsCubit extends Cubit<ComponentsState> {
       emit(ComponentsState.loaded(
         componentsList: lines,
         controllers: controllers,
+        isRed: List.generate(
+          lines.length,
+          (index) =>
+              oldLaptops != null ? lines[index] == oldLaptops[index] : false,
+        ),
       ));
     } on Exception catch (error) {
       log('Error while loading data', error: error);
@@ -339,6 +362,6 @@ class ComponentsCubit extends Cubit<ComponentsState> {
   }
 
   void reset() {
-    emit(ComponentsState.initial());
+    emit(const ComponentsState.initial());
   }
 }

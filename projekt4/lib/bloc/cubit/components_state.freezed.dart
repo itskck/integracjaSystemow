@@ -21,7 +21,7 @@ mixin _$ComponentsState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)
+            List<TextEditingController> controllers, List<bool> isRed)
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -30,7 +30,7 @@ mixin _$ComponentsState {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
   }) =>
       throw _privateConstructorUsedError;
@@ -39,7 +39,7 @@ mixin _$ComponentsState {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
     required TResult orElse(),
   }) =>
@@ -126,7 +126,7 @@ class _$_Initial implements _Initial {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)
+            List<TextEditingController> controllers, List<bool> isRed)
         loaded,
   }) {
     return initial();
@@ -138,7 +138,7 @@ class _$_Initial implements _Initial {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
   }) {
     return initial?.call();
@@ -150,7 +150,7 @@ class _$_Initial implements _Initial {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
     required TResult orElse(),
   }) {
@@ -239,7 +239,7 @@ class _$_Loading implements _Loading {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)
+            List<TextEditingController> controllers, List<bool> isRed)
         loaded,
   }) {
     return loading();
@@ -251,7 +251,7 @@ class _$_Loading implements _Loading {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
   }) {
     return loading?.call();
@@ -263,7 +263,7 @@ class _$_Loading implements _Loading {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
     required TResult orElse(),
   }) {
@@ -318,7 +318,9 @@ abstract class _$$_LoadedCopyWith<$Res> {
       __$$_LoadedCopyWithImpl<$Res>;
   @useResult
   $Res call(
-      {List<String> componentsList, List<TextEditingController> controllers});
+      {List<String> componentsList,
+      List<TextEditingController> controllers,
+      List<bool> isRed});
 }
 
 /// @nodoc
@@ -333,6 +335,7 @@ class __$$_LoadedCopyWithImpl<$Res>
   $Res call({
     Object? componentsList = null,
     Object? controllers = null,
+    Object? isRed = null,
   }) {
     return _then(_$_Loaded(
       componentsList: null == componentsList
@@ -343,6 +346,10 @@ class __$$_LoadedCopyWithImpl<$Res>
           ? _value._controllers
           : controllers // ignore: cast_nullable_to_non_nullable
               as List<TextEditingController>,
+      isRed: null == isRed
+          ? _value._isRed
+          : isRed // ignore: cast_nullable_to_non_nullable
+              as List<bool>,
     ));
   }
 }
@@ -352,9 +359,11 @@ class __$$_LoadedCopyWithImpl<$Res>
 class _$_Loaded implements _Loaded {
   const _$_Loaded(
       {required final List<String> componentsList,
-      required final List<TextEditingController> controllers})
+      required final List<TextEditingController> controllers,
+      required final List<bool> isRed})
       : _componentsList = componentsList,
-        _controllers = controllers;
+        _controllers = controllers,
+        _isRed = isRed;
 
   final List<String> _componentsList;
   @override
@@ -372,9 +381,17 @@ class _$_Loaded implements _Loaded {
     return EqualUnmodifiableListView(_controllers);
   }
 
+  final List<bool> _isRed;
+  @override
+  List<bool> get isRed {
+    if (_isRed is EqualUnmodifiableListView) return _isRed;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_isRed);
+  }
+
   @override
   String toString() {
-    return 'ComponentsState.loaded(componentsList: $componentsList, controllers: $controllers)';
+    return 'ComponentsState.loaded(componentsList: $componentsList, controllers: $controllers, isRed: $isRed)';
   }
 
   @override
@@ -385,14 +402,16 @@ class _$_Loaded implements _Loaded {
             const DeepCollectionEquality()
                 .equals(other._componentsList, _componentsList) &&
             const DeepCollectionEquality()
-                .equals(other._controllers, _controllers));
+                .equals(other._controllers, _controllers) &&
+            const DeepCollectionEquality().equals(other._isRed, _isRed));
   }
 
   @override
   int get hashCode => Object.hash(
       runtimeType,
       const DeepCollectionEquality().hash(_componentsList),
-      const DeepCollectionEquality().hash(_controllers));
+      const DeepCollectionEquality().hash(_controllers),
+      const DeepCollectionEquality().hash(_isRed));
 
   @JsonKey(ignore: true)
   @override
@@ -406,10 +425,10 @@ class _$_Loaded implements _Loaded {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)
+            List<TextEditingController> controllers, List<bool> isRed)
         loaded,
   }) {
-    return loaded(componentsList, controllers);
+    return loaded(componentsList, controllers, isRed);
   }
 
   @override
@@ -418,10 +437,10 @@ class _$_Loaded implements _Loaded {
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
   }) {
-    return loaded?.call(componentsList, controllers);
+    return loaded?.call(componentsList, controllers, isRed);
   }
 
   @override
@@ -430,12 +449,12 @@ class _$_Loaded implements _Loaded {
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function(List<String> componentsList,
-            List<TextEditingController> controllers)?
+            List<TextEditingController> controllers, List<bool> isRed)?
         loaded,
     required TResult orElse(),
   }) {
     if (loaded != null) {
-      return loaded(componentsList, controllers);
+      return loaded(componentsList, controllers, isRed);
     }
     return orElse();
   }
@@ -478,10 +497,12 @@ class _$_Loaded implements _Loaded {
 abstract class _Loaded implements ComponentsState {
   const factory _Loaded(
       {required final List<String> componentsList,
-      required final List<TextEditingController> controllers}) = _$_Loaded;
+      required final List<TextEditingController> controllers,
+      required final List<bool> isRed}) = _$_Loaded;
 
   List<String> get componentsList;
   List<TextEditingController> get controllers;
+  List<bool> get isRed;
   @JsonKey(ignore: true)
   _$$_LoadedCopyWith<_$_Loaded> get copyWith =>
       throw _privateConstructorUsedError;

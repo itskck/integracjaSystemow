@@ -10,5 +10,6 @@ class ComponentsState with _$ComponentsState {
   const factory ComponentsState.loaded({
     required List<String> componentsList,
     required List<TextEditingController> controllers,
+    required List<bool> isRed,
   }) = _Loaded;
 }
